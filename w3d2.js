@@ -7,49 +7,49 @@
 
 function addToFront(arr, value) {
     // your code here
-    for (var i = arr.length ; i > 0; i--){
-        arr[i] = arr[i-1]
+    for (var i = arr.length; i > 0; i--) {
+        arr[i] = arr[i - 1]
     }
-    arr[0]=value
+    arr[0] = value
 }
 
 function removeFront(arr) {
     // also, your code here
-    for (var i = 0 ; i < arr.length - 1; i++){
+    for (var i = 0; i < arr.length - 1; i++) {
         arr[i] = arr[i + 1]
     }
-        arr.length = arr.length - 1;
+    arr.length = arr.length - 1;
 }
 
-function addMultipleToFront(arr, value){
-    for ( var i = value.length -1; i >= 0; i-- ){
+function addMultipleToFront(arr, value) {
+    for (var i = value.length - 1; i >= 0; i--) {
         addToFront(test_2, value[i])
     }
 }
 
 //better solution
-function addMultipleToFront1(arr, value){
-    for ( var i = value.length -1; i >= 0; i-- ){
+function addMultipleToFront1(arr, value) {
+    for (var i = value.length - 1; i >= 0; i--) {
         arr[i + value.length] = arr[i];
     }
-    for (var i = 0; i < value.length; i++){
+    for (var i = 0; i < value.length; i++) {
         arr[i] = value[i];
     }
 }
 
 
-function removeMultipleFront(arr, count){
-    for (var i = 0; i<count; i++){
+function removeMultipleFront(arr, count) {
+    for (var i = 0; i < count; i++) {
         removeFront(test_2)
     }
 }
 
 //better solution
-function removeMultipleFront1(arr, count){
-    for (var i = 0; i<=arr.length-1-count; i++){
-        arr[i] = arr[i+count]
+function removeMultipleFront1(arr, count) {
+    for (var i = 0; i <= arr.length - 1 - count; i++) {
+        arr[i] = arr[i + count]
     }
-    arr.length = arr.length-count
+    arr.length = arr.length - count
 }
 
 let test_1 = [1, 2, 3, 4, 5];

@@ -16,8 +16,16 @@
 
 function rotateArr(arr, shiftBy) {
     // your code here
+    shiftBy = shiftBy % arr.length;
+    for (var i = arr.length - 1; i >= 0; i--) {
+        arr[i + shiftBy] = arr[i];
+    }
+    for (var j = 0; j < shiftBy; j++) {
+        arr[j] = arr[arr.length - shiftBy + j];
+    }
+    arr.length -= shiftBy;
     return arr;
 }
 
-console.log(rotateArr(['hello', 'good morning', 'hey', 'how goes it', 'Guten Tag'], 2))
+console.log(rotateArr(['hello', 'good morning', 'hey', 'how goes it', 'Guten Tag'], 7))
 // should print out ['how goes it', 'Guten Tag', 'hello', 'good morning', 'hey']

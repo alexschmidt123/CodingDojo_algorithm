@@ -23,7 +23,7 @@ class MinHeap{
         //remove from the end of our array, set a variable to equal to the popped value 
         let output = this.heap.pop()
         // from the root, determine if the parent is less than the children, if they are not, swap with the smaller child
-        let curr =1 
+        let curr =1  
         let leftChild = curr*2
         let rightChild = curr*2+1
         // hint: to calculate the left child (parent index *2) and right child (parent index *2 +1)

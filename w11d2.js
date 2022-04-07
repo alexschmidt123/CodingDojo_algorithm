@@ -95,7 +95,19 @@ class List
 	Average()
 	{
 		/* Your Code Here */
-        
+        let runner = this.head;
+        let sum = 0;
+        let count = 0;
+        while (runner != null){
+            sum += runner.value;
+            count ++;
+            runner = runner.next;
+        }
+        if (count==0){
+            return ("empty node")
+        }else{
+            return Math.floor(sum/count)
+        }
 	}
 };
 
@@ -135,3 +147,5 @@ list.Iterate(value=>console.log(value));
 */
 
 console.log(list.Average()); /* Expected: 411 */
+console.log(list)
+console.log(list.head)

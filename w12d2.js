@@ -18,6 +18,12 @@ class BST
     Min()
     {
         /* Your Code Here */
+        if (!this.root) return undefined;
+        let node = this.root;
+        while (node.left){
+            node = node.left;
+        }
+        return node.value;
     }
 
     Max()
@@ -50,8 +56,12 @@ class BST
     {
         /* Your Code Here */
         /* Call me recursively! */
+        if(!node) return false;
+        if(node.value == value) return true;
+        if (value < node.value) return this.ContainsRecursive(node.left, value);
+        else return this.ContainsRecursive(node.right, value);
     }
-  
+
     /* I'm just here to print your BST In-Order. */
     /* Could use me as an example to solve above algos, since I'm recursive and all. */
     Log(node,fmt="")
@@ -78,7 +88,7 @@ bst.root.left.right=new BSTNode(75);
 bst.root.right.left=new BSTNode(125);
 bst.root.right.right=new BSTNode(175);
 
-// console.log(bst.Log(bst.root));           /* Uncomment me if you want to see your tree */
+console.log(bst.Log(bst.root));           /* Uncomment me if you want to see your tree */
 console.log(bst.Min())                      /* Expected: 25 */
 console.log(bst.Max())                      /* Expected: 175 */
 console.log(bst.Contains(200))                  /* Expected: false */

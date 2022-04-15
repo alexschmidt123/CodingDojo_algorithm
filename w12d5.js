@@ -31,6 +31,9 @@ class BST
     {
         if(!node) return 0;
         /* Call me recursively */
+        var left = this.Size(node.left);
+        var right = this.Size(node.right);
+        return 1+right+left;
     }
 
     /* Time Complexity: O(N) */
@@ -54,4 +57,4 @@ bst.root.right.left=new BSTNode(125);
 bst.root.right.right=new BSTNode(175);
 
 console.log(bst.Size(bst.root));     /* Expected: 7 */
-console.log(bst.Height(bst.root));     /* Expected: 3 */
+//console.log(bst.Height(bst.root));     /* Expected: 3 */

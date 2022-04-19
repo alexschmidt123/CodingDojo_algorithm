@@ -17,20 +17,19 @@ class MinHeap
         /* Your Code Here */
         this.data.push(value);
 
-        //Iteratively swap the new number with its parent value while it is smaller than it's parent.
+        let i = this.data.length - 1;
 
-        let child = this.data[this.data.length-1];
-        let childIndex = this.data.length-1;
-        let parent = this.data[Math.floor(childIndex/2)];
-        let parentIndex =  Math.floor(childIndex/2);
-        while(value<parent){
-            this.data[childIndex] = parent;
-            this.data[parentIndex] = child;
-            parentIndex = Math.floor(parentIndex/2);
-            childIndex = Math.floor(childIndex/2);
-            child = this.data[childIndex];
-            parent = this.data[parentIndex];
+        while (this.data[i] < this.data[Math.floor(i / 2)]) {
+
+            let temp = this.data[Math.floor(i / 2)]
+
+            this.data[Math.floor(i / 2)] = this.data[i];
+            this.data[i] = temp;
+
+            i = Math.floor(i / 2);
+
         }
+        return this;
     }
 
     /* Description: Returns the smallest value in the heap without removing it. */
@@ -53,4 +52,4 @@ class MinHeap
 let heap=new MinHeap();
 heap.Insert(5);
 heap.Log(); /* Expected: 5,10,40,20,60,50,30,70 */
-console.log(heap.Min()); /* Expected: 5 */
+// console.log(heap.Min()); /* Expected: 5 */

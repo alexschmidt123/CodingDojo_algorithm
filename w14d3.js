@@ -16,31 +16,6 @@ class Queue
         this.length=0;
     }
     Enqueue(){}
-    /******************************************************************************
-    * Name: Queue.Compare(otherQueue)
-    * Description: Determines whether two queues have the exact same values
-    * Arguments:
-        * 1: Queue otherQueue
-    * Returns: Boolean
-    * Time: O(n)
-    * Space: O(1)
-    ******************************************************************************/
-    Compare(otherQueue){}
-    /******************************************************************************
-    * Name: Queue.IsPalindrome()
-    * Description: Determines whether the queue is a palindrome
-    * Arguments:
-        * None
-    * Returns: Boolean
-    * Time: O(n)
-    * Space: O(1)
-    * Examples:
-        * 1 2 3 2 1 <- true
-        * 5 3 1 8 4 <- false
-        * r a c e c a r <- true
-        * h a r r y p o t t e r <- false
-    ******************************************************************************/    
-    IsPalindrome(){}
     Log()
     {
         let str="";
@@ -51,19 +26,68 @@ class Queue
         console.log(str);
     }
 };
-
-let items=[10,20,30,20,10];
-let items2=[60,70,80,90,100];
-let q=new Queue();
-let q2=new Queue();
-let q3=new Queue();
-for(let i=0;i<items.length;i++)
+class Stack
 {
-    q.Enqueue(items[i]);
-    q2.Enqueue(items[i]);
-    q3.Enqueue(items2[i]);
+    constructor()
+    {
+        this.top=undefined;
+    }
+    Push(value)
+    {
+        if(!this.top)
+        {
+            this.top=new Node(value);
+            return;
+        }
+        let top=this.top;
+        this.top=new Node(value);
+        this.top.next=top;
+    }
+    Pop()
+    {
+        if(!this.top) return;
+        let topVal=this.top.value;
+        this.top=this.top.next;
+        return topVal;
+    }
+    IsEmpty()
+    {
+        return this.top==null;
+    }
+};
+class TwoStackQueue
+{
+    constructor()
+    {
+        this.stack1=new Stack();
+        this.stack2=new Stack();
+    }
+    Enqueue(value)
+    {
+        /* Your Code Here */
+        this.stack1.Push(value);
+    }
+    Dequeue()
+    {
+        while(!this.stack1.IsEmpty())
+        {
+            let top=this.stack1.Pop();
+            this.stack2.Push(top);
+        }
+        return this.stack2.Pop();
+        /* Your Code Here */
+    }
+};
+let items1=[10,20,30,10,30,20];
+let items2=[60,70,80,90,100,110];
+let twoStackQueue=new TwoStackQueue();
+for(let i=0;i<items1.length;i++)
+{
+    twoStackQueue.Enqueue(items1[i]);
 }
-console.log(q.Compare(q2));      /* Expected: true */
-console.log(q2.Compare(q3));     /* Expected: false */
-console.log(q.IsPalindrome());     /* Expected: true */
-console.log(q3.IsPalindrome()); /* Expected: false */
+console.log(twoStackQueue.Dequeue());
+console.log(twoStackQueue.Dequeue());
+console.log(twoStackQueue.Dequeue());
+console.log(twoStackQueue.Dequeue());
+console.log(twoStackQueue.Dequeue());
+console.log(twoStackQueue.Dequeue());
